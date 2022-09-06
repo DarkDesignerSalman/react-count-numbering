@@ -1,25 +1,29 @@
 import React, { Component } from 'react'
-import HomePage from './HomePage'
-import LoginPage from './LoginPage'
-
  class CONDITIONAL_RENDERING extends Component {
+
 constructor(props) {
   super(props)
 
   this.state = {
-     isLoggedIn : false
+     changeValue:""
   }
 }
 
 
+handleOnChange=(e)=>{
+  this.setState({
+    changeValue:e.target.value
+  },()=>{
+    console.log(this.state.changeValue)
+  })
+  // console.log(e.target.value)
+}
 
  render() {
-
-  const {isLoggedIn}=this.state
-  
- return(
+return(
       <div>
-        {isLoggedIn ? <HomePage /> : <LoginPage />}
+       <input type="text" onChange={this.handleOnChange}/>
+       <p>{this.state.changeValue}</p>
       </div>
     )
   }
